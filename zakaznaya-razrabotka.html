@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Заказная разработка ПО — GlowByte</title>
+<meta name="description" content="Заказная разработка от GlowByte: проектируем, внедряем и совершенствуем корпоративное ПО — от сервисов до высоконагруженных систем.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="index.html#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="index.html#why">О компании</a>
+      <a href="index.html#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="index.html#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page hero ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">Направление · Разработка</div>
+    <h1>Заказная <span class="ac">разработка</span></h1>
+    <p class="lead">Разработка и модернизация ИТ-систем для повышения эффективности бизнеса. Проектируем, внедряем и совершенствуем корпоративное ПО — от функциональных сервисов до высоконагруженных систем.</p>
+    <div style="margin-top:26px"><a href="index.html#cta" class="btn btn-white">Обсудить проект <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- ===== О направлении ===== -->
+<section class="dir-sec">
+  <div class="wrap reveal">
+    <span class="eyebrow">Что мы делаем</span>
+    <h2>Создаём решения с нуля и адаптируем ПО</h2>
+    <p class="lead">Создаём уникальные системы под задачи бизнеса и дорабатываем существующее ПО. Автоматизация помогает добиться главного:</p>
+    <ul class="checklist two">
+      <li>Снижаем вероятность ошибок — исключаем человеческий фактор</li>
+      <li>Упрощаем взаимодействие с ПО — понятные интерфейсы</li>
+      <li>Обеспечиваем актуальность данных для решений</li>
+      <li>Оптимизируем затраты ресурсов и время команды</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Оранжевый блок фактов ===== -->
+<section class="dir-sec" style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="facts">
+      <span class="eyebrow">Как мы работаем</span>
+      <h2>Полный цикл: от исследования до запуска</h2>
+      <div class="facts-grid">
+        <div class="fact"><div class="fl">1 · Анализ процессов и ПО</div><div class="fv">от 2 недель</div></div>
+        <div class="fact"><div class="fl">2 · Проектное решение</div><div class="fv">от 1 месяца</div></div>
+        <div class="fact"><div class="fl">3 · Реализация MVP</div><div class="fv">от 6 недель</div></div>
+        <div class="fact"><div class="fl">4 · Тесты и запуск</div><div class="fv">от 2 недель</div></div>
+        <div class="fact"><div class="fl">Контакт</div><div class="fv">dev@glowbyteconsulting.com</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Наши услуги (pop-up) ===== -->
+<section class="dir-sec alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Наши услуги</span>
+    <h2>Что можем разработать</h2>
+    <div class="sol-grid">
+      <button class="sol-card" data-modal-open="m-dev-1">
+        <div class="sc-ico">🎨</div>
+        <h3>Разработка front-end</h3>
+        <p>Удобный и понятный интерфейс для ускорения бизнес-операций.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-2">
+        <div class="sc-ico">⚙️</div>
+        <h3>Разработка back-end</h3>
+        <p>Архитектура, базы данных, интеграции и сервисная логика.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-3">
+        <div class="sc-ico">🧪</div>
+        <h3>Создание MVP</h3>
+        <p>Тестирование гипотез и снижение рисков перед масштабом.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-4">
+        <div class="sc-ico">📱</div>
+        <h3>Мобильные и веб-приложения</h3>
+        <p>Функционал, интерфейс, логика и интеграции под задачу.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-5">
+        <div class="sc-ico">🏗</div>
+        <h3>Высоконагруженные системы</h3>
+        <p>Масштабируемые и отказоустойчивые решения для больших объёмов.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-6">
+        <div class="sc-ico">🔧</div>
+        <h3>Реинжиниринг систем</h3>
+        <p>Переработка архитектуры, рост скорости и отказоустойчивости.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-7">
+        <div class="sc-ico">✨</div>
+        <h3>UX/UI дизайн</h3>
+        <p>Анализ требований, удобный дизайн и оптимизация интерфейса.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dev-8">
+        <div class="sc-ico">🧩</div>
+        <h3>Расширение возможностей</h3>
+        <p>Разработка и интеграция новых модулей без потери совместимости.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Результаты ===== -->
+<section class="dir-sec">
+  <div class="wrap reveal">
+    <span class="eyebrow">Результаты</span>
+    <h2>Что получает бизнес</h2>
+    <div class="ben-grid">
+      <div class="ben"><div class="bn">↓</div><h4>Меньше ошибок</h4><p>Надёжные процессы и меньше ручного труда.</p></div>
+      <div class="ben"><div class="bn">👥</div><h4>Доступность систем</h4><p>Сложные системы понятны широкому кругу пользователей.</p></div>
+      <div class="ben"><div class="bn">360°</div><h4>Полная картина</h4><p>Актуальные данные для своевременных решений.</p></div>
+      <div class="ben"><div class="bn">↑</div><h4>Экономия</h4><p>Меньше времени и трудозатрат команды.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Нужна разработка под вашу задачу?</h2>
+    <p>Проанализируем процессы и предложим решение — от MVP до высоконагруженной системы.</p>
+    <a href="index.html#cta" class="btn btn-white">Оставить заявку</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="contacts">
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="business-intelligence.html">Business Intelligence</a></li>
+        <li><a href="dwh.html">DWH — хранилища данных</a></li>
+        <li><a href="finansovaya-analitika.html">Финансовая аналитика</a></li>
+        <li><a href="zakaznaya-razrabotka.html">Заказная разработка</a></li>
+        <li><a href="index.html#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="index.html#why">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="events.html">Мероприятия</a></li>
+        <li><a href="index.html#cta">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:dev@glowbyteconsulting.com">dev@glowbyteconsulting.com</a></li>
+        <li><a href="tel:88002220293">8 800 222 02 93</a></li>
+        <li><a href="#">Москва, Нижний Сусальный пер., 5с19, оф. 307</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb"><span>© 2026 GlowByte Consulting. Все права защищены.</span><a href="#">Политика конфиденциальности</a></div>
+</footer>
+
+<!-- ===== Pop-up окна ===== -->
+<div class="modal" id="m-dev-1"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🎨</div><h3>Разработка front-end</h3>
+  <p>Создаём удобный и понятный интерфейс, который ускоряет бизнес-операции и снижает нагрузку на пользователей.</p>
+  <ul><li>Проектирование пользовательских сценариев</li><li>Адаптивная вёрстка и производительность</li><li>Интеграция с back-end и внешними сервисами</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-2"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">⚙️</div><h3>Разработка back-end</h3>
+  <p>Проектируем архитектуру, базы данных, интеграции и сервисную логику с упором на безопасность, стабильность и масштабируемость.</p>
+  <ul><li>Проектирование архитектуры и API</li><li>Базы данных и интеграции</li><li>Безопасность и отказоустойчивость</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-3"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🧪</div><h3>Создание MVP</h3>
+  <p>Быстро запускаем минимальный жизнеспособный продукт, чтобы проверить гипотезы, собрать аналитику и снизить риски перед масштабной разработкой.</p>
+  <ul><li>Определение ключевых гипотез</li><li>Быстрый запуск и сбор обратной связи</li><li>Основа для дальнейшего развития</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-4"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">📱</div><h3>Мобильные и веб-приложения</h3>
+  <p>Проектируем функционал, интерфейс, логику и интеграции приложений под задачи бизнеса и его пользователей.</p>
+  <ul><li>Веб- и мобильные платформы</li><li>Единый пользовательский опыт</li><li>Интеграции с корпоративными системами</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-5"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🏗</div><h3>Высоконагруженные ИТ-решения</h3>
+  <p>Строим масштабируемые и отказоустойчивые системы для больших объёмов данных и большого числа одновременных пользователей.</p>
+  <ul><li>Горизонтальное масштабирование</li><li>Отказоустойчивая архитектура</li><li>Мониторинг и производительность</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-6"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🔧</div><h3>Реинжиниринг систем и архитектуры</h3>
+  <p>Оптимизируем логику и алгоритмы, перерабатываем архитектуру, повышаем скорость работы и отказоустойчивость существующих систем.</p>
+  <ul><li>Аудит текущей системы</li><li>Оптимизация алгоритмов и архитектуры</li><li>Рост скорости и надёжности</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-7"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">✨</div><h3>UX/UI — создание и оптимизация</h3>
+  <p>Анализируем требования, проектируем удобный дизайн и оптимизируем существующие интерфейсы под реальные сценарии пользователей.</p>
+  <ul><li>Исследование пользователей и задач</li><li>Прототипы и дизайн интерфейса</li><li>Оптимизация текущего UX</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dev-8"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🧩</div><h3>Расширение возможностей систем</h3>
+  <p>Анализируем, разрабатываем и интегрируем новые модули к существующим системам с сохранением совместимости и производительности.</p>
+  <ul><li>Новые модули и функции</li><li>Совместимость с текущим ПО</li><li>Без потери производительности</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Финансовая аналитика (CPM) — GlowByte</title>
+<meta name="description" content="Финансовая аналитика и CPM от GlowByte: бюджетирование, планирование, маржинальность, МСФО, управление денежным потоком и импортозамещение.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="index.html#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="index.html#why">О компании</a>
+      <a href="index.html#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="index.html#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page hero ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">Направление · Финансы</div>
+    <h1>Финансовая <span class="ac">аналитика</span></h1>
+    <p class="lead">Автоматизируйте управление финансами с GlowByte: планирование, контроль и оптимизация денежных потоков в реальном времени — без ручного пересчёта показателей в таблицах.</p>
+    <div style="margin-top:26px"><a href="index.html#cta" class="btn btn-white">Обсудить проект <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- ===== О направлении ===== -->
+<section class="dir-sec">
+  <div class="wrap reveal">
+    <span class="eyebrow">Что мы решаем</span>
+    <h2>Автоматизация управления финансами (CPM)</h2>
+    <p class="lead">Заменяем хаос в таблицах на управляемую систему: единый источник данных, прозрачные расчёты и контроль исполнения — от подразделений до групп компаний.</p>
+    <ul class="checklist two">
+      <li>Ролевая модель с правами до уровня ячеек и аудитом</li>
+      <li>Единый источник правды вместо конфликтующих данных</li>
+      <li>Контроль исполнения бюджетов и план-график</li>
+      <li>Автоматизация расчётов и анализ «в два клика»</li>
+      <li>Конструкторы отчётности и централизованное управление</li>
+      <li>Автоматический сбор и доставка отчётов по графику</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Оранжевый блок фактов ===== -->
+<section class="dir-sec" style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="facts">
+      <span class="eyebrow">Коротко</span>
+      <h2>О направлении</h2>
+      <div class="facts-grid">
+        <div class="fact"><div class="fl">Принцип</div><div class="fv">«Ваш результат — наша цель»</div></div>
+        <div class="fact"><div class="fl">Поддержка</div><div class="fv">Сопровождение 12 месяцев</div></div>
+        <div class="fact"><div class="fl">Импортозамещение</div><div class="fv">Переход на отечественное ПО</div></div>
+        <div class="fact"><div class="fl">Отрасли</div><div class="fv">Ритейл, банки, производство, госсектор…</div></div>
+        <div class="fact"><div class="fl">Контакт</div><div class="fv">fi@glowbyteconsulting.com</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Наши решения (pop-up) ===== -->
+<section class="dir-sec alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Наши решения</span>
+    <h2>Что можно внедрить</h2>
+    <div class="sol-grid">
+      <button class="sol-card" data-modal-open="m-fi-1">
+        <div class="sc-ico">🧮</div><h3>Функционально-стоимостной анализ</h3>
+        <p>Многоэтапные аллокации и реальная себестоимость продуктов.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-2">
+        <div class="sc-ico">📋</div><h3>Бюджетирование</h3>
+        <p>Бюджеты всех видов, KPI, согласование и контроль исполнения.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-3">
+        <div class="sc-ico">📈</div><h3>Маржинальность продукции</h3>
+        <p>Расчёт в многопередельных цепочках с учётом брака и запасов.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-4">
+        <div class="sc-ico">🗓</div><h3>Планирование</h3>
+        <p>Кадры, цепочки поставок, потери на узких местах производства.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-5">
+        <div class="sc-ico">🎯</div><h3>Стратегическое планирование</h3>
+        <p>Денежные потоки на длинном горизонте и портфель инвестпроектов.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-6">
+        <div class="sc-ico">🔗</div><h3>Интегрированное бизнес-планирование</h3>
+        <p>Единый план продаж, производства, закупок и стратегии.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-7">
+        <div class="sc-ico">💧</div><h3>Планирование денежного потока</h3>
+        <p>Ликвидность, задолженность, риски, связь казначейства с бюджетом.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-8">
+        <div class="sc-ico">📊</div><h3>Отчётность по МСФО</h3>
+        <p>Трансформация РСБУ в МСФО, консолидация и быстрое закрытие.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-9">
+        <div class="sc-ico">🇷🇺</div><h3>Импортозамещение</h3>
+        <p>Переход на отечественное и открытое ПО по требованиям закона.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-fi-10">
+        <div class="sc-ico">🧠</div><h3>Проектирование финансовых решений</h3>
+        <p>Единая методология, согласование данных и справочников.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Отрасли ===== -->
+<section class="dir-sec">
+  <div class="wrap reveal">
+    <span class="eyebrow">Отрасли</span>
+    <h2>Где применяем</h2>
+    <p class="lead">Решения адаптируем под задачи отрасли — от планирования продаж до отчётности МСФО и контроля SLA.</p>
+    <div class="taglist">
+      <span>Ритейл</span><span>Банки</span><span>Производство</span><span>Строительство</span>
+      <span>Логистика</span><span>Фармацевтика</span><span>Телеком</span><span>Госсектор</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Результаты ===== -->
+<section class="dir-sec alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Результаты</span>
+    <h2>Что получает бизнес</h2>
+    <div class="ben-grid">
+      <div class="ben"><div class="bn">1</div><h4>Источник правды</h4><p>Единые данные вместо конфликтующих версий.</p></div>
+      <div class="ben"><div class="bn">2 клика</div><h4>Анализ</h4><p>Расчёты автоматизированы, ответы — сразу.</p></div>
+      <div class="ben"><div class="bn">МСФО</div><h4>Готовая отчётность</h4><p>Трансформация и консолидация из коробки.</p></div>
+      <div class="ben"><div class="bn">12 мес</div><h4>Поддержка</h4><p>Сопровождение и консультации после запуска.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Автоматизировать финансы?</h2>
+    <p>Изучим ваши регламенты и предложим решение — от бюджетирования до отчётности по МСФО.</p>
+    <a href="index.html#cta" class="btn btn-white">Оставить заявку</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="contacts">
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="business-intelligence.html">Business Intelligence</a></li>
+        <li><a href="dwh.html">DWH — хранилища данных</a></li>
+        <li><a href="finansovaya-analitika.html">Финансовая аналитика</a></li>
+        <li><a href="zakaznaya-razrabotka.html">Заказная разработка</a></li>
+        <li><a href="index.html#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="index.html#why">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="events.html">Мероприятия</a></li>
+        <li><a href="index.html#cta">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:fi@glowbyteconsulting.com">fi@glowbyteconsulting.com</a></li>
+        <li><a href="#">Москва, Нижний Сусальный пер., 5с19, оф. 307</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb"><span>© 2026 GlowByte Consulting. Все права защищены.</span><a href="#">Политика конфиденциальности</a></div>
+</footer>
+
+<!-- ===== Pop-up окна решений ===== -->
+<div class="modal" id="m-fi-1"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🧮</div><h3>Функционально-стоимостной анализ</h3>
+  <p>Автоматизируем калькуляцию многоэтапных аллокаций и оцениваем реальную себестоимость продуктов через процессно-ориентированное бюджетирование.</p>
+  <ul><li>Многоэтапные аллокации затрат</li><li>Реальная себестоимость продуктов</li><li>Процессно-ориентированное бюджетирование</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-2"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">📋</div><h3>Бюджетирование</h3>
+  <p>Полный цикл бюджетного управления: HR-расходы, инвестиционные, операционные и мастер-бюджеты, проектное бюджетирование — от подразделений до групп компаний.</p>
+  <ul><li>Постановка KPI, расчёт и согласование</li><li>Контроль исполнения бюджетов</li><li>Консолидация по группе компаний</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-3"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">📈</div><h3>Маржинальность продукции</h3>
+  <p>Расчёт маржинальности в многопередельных производственных цепочках с альтернативными маршрутами, учётом оценки запасов, доли брака — по видам и партиям.</p>
+  <ul><li>Альтернативные маршруты производства</li><li>Учёт брака и оценки запасов</li><li>Аналитика по видам и партиям</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-4"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🗓</div><h3>Планирование</h3>
+  <p>Кадровое планирование, планирование цепочек поставок и расчёт производственных потерь на узких местах.</p>
+  <ul><li>Кадровое планирование</li><li>Цепочки поставок</li><li>Потери на узких местах производства</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-5"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🎯</div><h3>Стратегическое планирование</h3>
+  <p>Управление денежными потоками на широком горизонте и консолидация портфеля инвестиционных проектов.</p>
+  <ul><li>Долгосрочные денежные потоки</li><li>Портфель инвестпроектов</li><li>Сценарное планирование</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-6"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🔗</div><h3>Интегрированное бизнес-планирование</h3>
+  <p>Объединяем планирование продаж, производства, закупок и стратегии в единый управляемый процесс.</p>
+  <ul><li>Единый план продаж и производства</li><li>Синхронизация закупок</li><li>Связь со стратегией компании</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-7"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">💧</div><h3>Планирование денежного потока</h3>
+  <p>Управление ликвидностью, задолженностью и финансовыми рисками, связь казначейства с бюджетом компании.</p>
+  <ul><li>Управление ликвидностью</li><li>Контроль задолженности и рисков</li><li>Связь казначейства с бюджетом</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-8"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">📊</div><h3>Отчётность по требованиям МСФО</h3>
+  <p>Трансформация РСБУ в МСФО, финансовая консолидация, витрины данных и быстрое закрытие периода.</p>
+  <ul><li>Трансформация РСБУ → МСФО</li><li>Финансовая консолидация</li><li>Быстрое закрытие периода</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-9"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🇷🇺</div><h3>Импортозамещение</h3>
+  <p>Переход на отечественное и открытое ПО в соответствии с требованиями законодательства — без потери функциональности.</p>
+  <ul><li>Аудит текущего стека</li><li>Подбор отечественных решений</li><li>Миграция и сопровождение</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-fi-10"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🧠</div><h3>Экспертиза по проектированию решений</h3>
+  <p>Унифицируем финансовые решения на основе единой методологии, согласуем данные и справочники для прозрачной аналитики.</p>
+  <ul><li>Единая методология</li><li>Согласование данных и справочников</li><li>Выбор оптимальной архитектуры</li></ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
