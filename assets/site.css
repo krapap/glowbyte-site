@@ -162,11 +162,23 @@ footer a{color:#cfd3d9;font-size:15px}footer a:hover{color:var(--orange)}
 .checklist li{position:relative;padding-left:34px;font-size:16px}
 .checklist li::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:6px;background:linear-gradient(140deg,#FE6A00,#FFB000)}
 .checklist li::after{content:"✓";position:absolute;left:5px;top:1px;color:#fff;font-weight:900;font-size:13px}
-.dir-aside{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 30px rgba(20,23,28,.06)}
-.dir-aside h4{font-size:15px;letter-spacing:.5px;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
-.dir-aside .kv{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
-.dir-aside .kv:last-child{border-bottom:none}
-.dir-aside .kv b{font-weight:700}
+.checklist.two{grid-template-columns:1fr 1fr;gap:14px 40px}
+@media(max-width:700px){.checklist.two{grid-template-columns:1fr}}
+
+/* оранжевый блок фактов (бывший боковой «Опыт/Кратко») */
+.facts{position:relative;overflow:hidden;border-radius:26px;color:#fff;padding:46px 44px;
+  background:linear-gradient(135deg,#FE6A00 0%,#FF8A2B 55%,#FFB84D 100%)}
+.facts::after{content:"";position:absolute;width:280px;height:280px;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;right:-80px;top:-90px}
+.facts::before{content:"";position:absolute;width:200px;height:200px;border:1.5px solid rgba(255,255,255,.28);border-radius:50%;left:-70px;bottom:-80px}
+.facts>*{position:relative;z-index:1}
+.facts .eyebrow{color:#fff;margin-bottom:8px}
+.facts .eyebrow::before{background:#fff}
+.facts h2{color:#fff;margin-bottom:26px}
+.facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:26px 34px}
+.fact{border-left:2px solid rgba(255,255,255,.45);padding-left:16px}
+.fact .fl{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.fact .fv{font-size:18px;font-weight:800;margin-top:7px;line-height:1.3}
+@media(max-width:560px){.facts{padding:34px 24px}}
 
 /* решения (клик → pop-up) */
 .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px}
