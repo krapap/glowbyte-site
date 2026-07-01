@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мероприятия GlowByte — вебинары, конференции и митапы</title>
+<meta name="description" content="Мероприятия GlowByte: вебинары, конференции и митапы по BI, Big Data, машинному обучению и цифровой трансформации. Регистрация онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="index.html#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="index.html#why">О компании</a>
+      <a href="index.html#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html" class="active">Мероприятия</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="index.html#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page hero ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">События</div>
+    <h1>Мероприятия <span class="ac">GlowByte</span></h1>
+    <p class="lead">Вебинары, конференции и&nbsp;митапы про BI, большие данные и&nbsp;искусственный интеллект. Живой обмен опытом с&nbsp;экспертами и&nbsp;практиками рынка.</p>
+  </div>
+</section>
+
+<!-- ===== Events ===== -->
+<section>
+  <div class="wrap">
+
+    <div class="tabs" data-tabs>
+      <button data-tab="upcoming" class="on">Предстоящие</button>
+      <button data-tab="past">Прошедшие</button>
+    </div>
+
+    <!-- Предстоящие -->
+    <div data-tabpanel="upcoming">
+      <div class="events">
+
+        <div class="event reveal">
+          <div class="cal"><div class="d">15</div><div class="m">июл</div></div>
+          <div>
+            <div class="etype"><span class="dot"></span>Вебинар · онлайн</div>
+            <h3>BI без западных вендоров: как перейти безболезненно</h3>
+            <div class="emeta">
+              <span>🕒 11:00 (МСК)</span>
+              <span>💻 Онлайн, Zoom</span>
+              <span>🎙 Ведущие аналитики GlowByte</span>
+            </div>
+          </div>
+          <div class="eaction"><a href="#" class="btn btn-primary" style="padding:12px 24px;font-size:15px">Зарегистрироваться</a></div>
+        </div>
+
+        <div class="event reveal">
+          <div class="cal"><div class="d">29</div><div class="m">июл</div></div>
+          <div>
+            <div class="etype"><span class="dot"></span>Митап · Москва</div>
+            <h3>Data Governance Meetup: качество данных на практике</h3>
+            <div class="emeta">
+              <span>🕒 18:30 (МСК)</span>
+              <span>📍 Москва, офис GlowByte</span>
+              <span>👥 Оффлайн + трансляция</span>
+            </div>
+          </div>
+          <div class="eaction"><a href="#" class="btn btn-primary" style="padding:12px 24px;font-size:15px">Зарегистрироваться</a></div>
+        </div>
+
+        <div class="event reveal">
+          <div class="cal"><div class="d">12</div><div class="m">авг</div></div>
+          <div>
+            <div class="etype"><span class="dot"></span>Конференция · онлайн</div>
+            <h3>AI + Data Day: агентная аналитика для бизнеса</h3>
+            <div class="emeta">
+              <span>🕒 10:00–16:00 (МСК)</span>
+              <span>💻 Онлайн</span>
+              <span>🎟 Участие бесплатное</span>
+            </div>
+          </div>
+          <div class="eaction"><a href="#" class="btn btn-primary" style="padding:12px 24px;font-size:15px">Зарегистрироваться</a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Прошедшие -->
+    <div data-tabpanel="past" style="display:none">
+      <div class="events">
+
+        <div class="event past reveal">
+          <div class="cal"><div class="d">03</div><div class="m">июн</div></div>
+          <div>
+            <div class="etype"><span class="dot"></span>Вебинар · запись</div>
+            <h3>Прогнозирование спроса в ритейле: кейсы и грабли</h3>
+            <div class="emeta">
+              <span>💻 Онлайн</span>
+              <span>▶ Запись доступна</span>
+            </div>
+          </div>
+          <div class="eaction"><a href="#" class="btn btn-ghost" style="padding:12px 24px;font-size:15px">Смотреть запись</a></div>
+        </div>
+
+        <div class="event past reveal">
+          <div class="cal"><div class="d">20</div><div class="m">май</div></div>
+          <div>
+            <div class="etype"><span class="dot"></span>Конференция · запись</div>
+            <h3>DWH 2026: архитектура корпоративных хранилищ</h3>
+            <div class="emeta">
+              <span>📍 Москва</span>
+              <span>▶ Запись и слайды</span>
+            </div>
+          </div>
+          <div class="eaction"><a href="#" class="btn btn-ghost" style="padding:12px 24px;font-size:15px">Смотреть запись</a></div>
+        </div>
+
+        <div class="event past reveal">
+          <div class="cal"><div class="d">08</div><div class="m">апр</div></div>
+          <div>
+            <div class="etype"><span class="dot"></span>Митап · запись</div>
+            <h3>RPA-митап: роботизация без боли</h3>
+            <div class="emeta">
+              <span>💻 Онлайн</span>
+              <span>▶ Запись доступна</span>
+            </div>
+          </div>
+          <div class="eaction"><a href="#" class="btn btn-ghost" style="padding:12px 24px;font-size:15px">Смотреть запись</a></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Хотите выступить или стать партнёром?</h2>
+    <p>Напишите нам — расскажем про ближайшие мероприятия и возможности участия.</p>
+    <a href="index.html#cta" class="btn btn-white">Связаться с нами</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="contacts">
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="index.html#directions">Business Intelligence</a></li>
+        <li><a href="index.html#directions">DWH — хранилища данных</a></li>
+        <li><a href="index.html#directions">Advanced Analytics</a></li>
+        <li><a href="index.html#directions">Risk Management</a></li>
+        <li><a href="index.html#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="index.html#why">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="events.html">Мероприятия</a></li>
+        <li><a href="index.html#cta">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:contact@gbconsulting.ru">contact@gbconsulting.ru</a></li>
+        <li><a href="#">Москва, Нижний Сусальный пер., 5с19, оф. 307</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb"><span>© 2026 GlowByte Consulting. Все права защищены.</span><a href="#">Политика конфиденциальности</a></div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

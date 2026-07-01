@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowByte — Внедряем решения BI и Big Data в России</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ===== Brand tokens (Гайдбук GlowByte 2024) ===== */
+  :root{
+    --orange:#FE6A00; --orange-deep:#E85D00;
+    --green:#337D76; --yellow:#FFB000;
+    --blue:#32487D; --blue-deep:#1d2a52; --navy:#141d3a;
+    --black:#15171c; --gray:#5b6470;
+    --bg-soft:#f6f8fb; --line:#e9ecf2; --maxw:1200px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Montserrat',system-ui,sans-serif;color:var(--black);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  section{padding:96px 0}
+  h2{font-size:clamp(28px,3.4vw,42px);font-weight:800;letter-spacing:-.6px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--orange)}
+  .lead{color:var(--gray);font-size:18px;max-width:620px;margin-top:14px}
+
+  /* ===== Buttons ===== */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;padding:15px 28px;border-radius:12px;cursor:pointer;border:2px solid transparent;transition:transform .15s,box-shadow .15s,background .15s,color .15s,border-color .15s}
+  .btn-primary{background:var(--orange);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(254,106,0,.4)}
+  .btn-ghost{background:#fff;color:var(--black);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+  .btn-glass{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.55);backdrop-filter:blur(4px)}
+  .btn-glass:hover{background:rgba(255,255,255,.22)}
+  .btn .ar{transition:transform .2s}.btn:hover .ar{transform:translateX(3px)}
+
+  /* ===== Header (прозрачная на hero -> белая на скролле) ===== */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .25s,box-shadow .25s}
+  header.solid{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(20,23,28,.06)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{display:flex;align-items:center}
+  .logo img{height:30px;width:auto;display:block}
+  .logo .l-orange{display:none}
+  header.solid .logo .l-white{display:none}
+  header.solid .logo .l-orange{display:block}
+  .menu{display:flex;gap:6px;align-items:center}
+  .menu>a,.menu>.has-mega>span{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px;padding:10px 14px;border-radius:10px;color:#fff;cursor:pointer;transition:background .15s,color .15s}
+  header.solid .menu>a,header.solid .menu>.has-mega>span{color:var(--black)}
+  .menu>a:hover,.menu>.has-mega:hover>span{background:rgba(255,255,255,.16)}
+  header.solid .menu>a:hover,header.solid .menu>.has-mega:hover>span{background:var(--bg-soft);color:var(--orange)}
+  .menu .chev{font-size:10px;transition:transform .2s}
+  .has-mega:hover .chev{transform:rotate(180deg)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .burger{display:none;font-size:26px;background:none;border:0;color:#fff;cursor:pointer}
+  header.solid .burger{color:var(--black)}
+
+  /* ===== Mega menu ===== */
+  .has-mega{position:static}
+  .mega{position:absolute;left:50%;top:66px;transform:translateX(-50%) translateY(10px);width:min(1080px,94vw);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 70px rgba(20,23,28,.18);padding:22px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;z-index:120}
+  .has-mega:hover .mega,.mega:hover{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .mega-head{display:flex;justify-content:space-between;align-items:baseline;margin:0 6px 14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .mega-head h4{font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+  .mega-head a{font-weight:700;color:var(--orange);font-size:14px}
+  .mega-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+  .mega-item{display:flex;gap:11px;padding:11px;border-radius:12px;transition:background .15s}
+  .mega-item:hover{background:var(--bg-soft)}
+  .mega-item .cube{flex:0 0 auto;width:13px;height:13px;border-radius:3px;margin-top:4px}
+  .mega-item .mt{font-weight:700;font-size:13.5px;line-height:1.25}
+  .mega-item .md{font-size:12px;color:var(--gray);margin-top:3px;line-height:1.3}
+
+  /* ===== Hero: синий градиент + анимация больших данных ===== */
+  .hero{position:relative;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(60% 80% at 82% 18%, rgba(254,106,0,.5) 0%, transparent 55%),
+      radial-gradient(50% 70% at 12% 90%, rgba(255,176,0,.25) 0%, transparent 60%),
+      linear-gradient(135deg, #141d3a 0%, #1d2a52 45%, #32487D 100%);
+  }
+  #net{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block}
+  .hero-fade{position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:linear-gradient(transparent,rgba(20,29,58,.0))}
+  .hero .wrap{position:relative;z-index:5;display:flex;flex-direction:column;justify-content:flex-start;min-height:100vh;padding:92px 24px 48px}
+  .hero-lower{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:flex-start;margin-top:14px}
+  .hero-copy{min-width:0}
+  .badge{display:inline-flex;align-self:flex-start;align-items:center;gap:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:11px 26px;border-radius:40px;font-weight:700;font-size:16px;letter-spacing:.2px;margin-bottom:18px;backdrop-filter:blur(4px)}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(254,106,0,.6)}70%{box-shadow:0 0 0 9px rgba(254,106,0,0)}100%{box-shadow:0 0 0 0 rgba(254,106,0,0)}}
+  .hero h1{font-size:clamp(52px,4.7vw,70px);font-weight:800;line-height:1.04;letter-spacing:-2px}
+  .hero h1 .ac{background:linear-gradient(100deg,#FFB000,#FE6A00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.sub{margin-top:16px;font-size:19px;color:rgba(255,255,255,.85);max-width:500px}
+  .hero-actions{display:flex;gap:14px;margin-top:24px;flex-wrap:wrap}
+  .hero-trust{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;color:rgba(255,255,255,.7);font-size:14px;font-weight:600}
+  .hero-trust .names{display:flex;gap:18px;flex-wrap:wrap;color:#fff;opacity:.9}
+  /* правый акцент — «капсула» больших данных поверх сети */
+  .data-orb{position:relative;z-index:5;justify-self:center;margin-top:-190px;width:min(420px,96%);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(254,106,0,.35), rgba(50,72,125,.15) 60%, transparent 70%);
+    border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;text-align:center;
+    box-shadow:inset 0 0 60px rgba(254,106,0,.15);animation:orb 8s ease-in-out infinite}
+  @keyframes orb{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .data-orb .big{font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-2px;line-height:1}
+  .data-orb .cap{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:8px;font-weight:700}
+  .data-orb .ring{position:absolute;inset:-1px;border-radius:50%;border:1px dashed rgba(255,255,255,.25);animation:spin 26s linear infinite}
+  .data-orb .ring2{inset:-26px;border-color:rgba(254,106,0,.3);animation-duration:36s;animation-direction:reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* терминал AI-агента, печатающего код */
+  .term{position:relative;z-index:2;width:86%;max-width:360px;background:#0d1733;border:1px solid rgba(255,255,255,.14);border-radius:12px;box-shadow:0 22px 55px rgba(0,0,0,.45);overflow:hidden;text-align:left}
+  .term-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08)}
+  .term-bar i{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  .term-bar .rd{background:#ff5f57}.term-bar .yl{background:#febc2e}.term-bar .gn{background:#28c840}
+  .term-bar .tt{margin-left:6px;font-size:12.5px;color:rgba(255,255,255,.6);font-weight:600;white-space:nowrap}
+  .term-bar .tt .ai{color:var(--orange)}
+  .code{margin:0;padding:18px;font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:14.5px;line-height:1.7;color:#dbe2f0;min-height:178px;white-space:pre-wrap;word-break:break-word}
+  .code .k{color:#FF8A3D}.code .s{color:#7FD1B9}.code .c{color:#6b7794}.code .n{color:#FFC861}.code .f{color:#9bb4ff}
+  .cursor{display:inline-block;width:8px;height:17px;background:var(--orange);vertical-align:-3px;margin-left:1px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ===== Stats band ===== */
+  .stats{background:var(--bg-soft);border-bottom:1px solid var(--line)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:48px 24px}
+  .stat{text-align:center}
+  .stat .n{font-size:clamp(34px,4vw,52px);font-weight:900;letter-spacing:-1.5px;color:var(--orange);line-height:1}
+  .stat .l{font-size:15px;color:var(--gray);font-weight:600;margin-top:8px}
+
+  /* ===== Направления ===== */
+  .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}
+  .dir{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+  .dir::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;transform:scaleX(0);transform-origin:left;transition:transform .25s;background:var(--c)}
+  .dir:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 20px 45px rgba(20,23,28,.12)}
+  .dir:hover::before{transform:scaleX(1)}
+  .dir .cube{width:30px;height:30px;border-radius:8px;background:var(--c);margin-bottom:16px;transition:transform .25s}
+  .dir:hover .cube{transform:rotate(-8deg) scale(1.08)}
+  .dir h3{font-size:17px;font-weight:700;line-height:1.25;margin-bottom:8px}
+  .dir p{font-size:13.5px;color:var(--gray);line-height:1.4}
+  .dir .go{position:absolute;right:20px;bottom:18px;opacity:0;transform:translateX(-6px);transition:.25s;color:var(--c);font-weight:800}
+  .dir:hover .go{opacity:1;transform:translateX(0)}
+
+  /* ===== Clients ===== */
+  .clients{background:var(--bg-soft);text-align:center}
+  .clients .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:34px}
+  .logo-cell{background:#fff;aspect-ratio:16/9;display:grid;place-items:center;padding:20px 16px}
+  .logo-cell img{max-width:100%;max-height:60px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6;transition:filter .3s ease,opacity .3s ease,transform .3s ease}
+  .logo-cell:hover img{filter:grayscale(0);opacity:1;transform:scale(1.07)}
+  /* текстовый фолбэк, пока нет файла логотипа */
+  .logo-cell .wm{font-weight:900;font-size:18px;letter-spacing:-.4px;text-align:center;line-height:1.12;color:#aab2bf;transition:color .3s ease,transform .3s ease}
+  .logo-cell:hover .wm{color:var(--c,var(--blue));transform:scale(1.06)}
+
+  /* ===== Why (синий градиент) ===== */
+  .why{background:linear-gradient(135deg,#1d2a52,#32487D);color:#fff;position:relative;overflow:hidden}
+  .why::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(254,106,0,.35),transparent 70%);right:-120px;top:-120px}
+  .why .wrap{position:relative;z-index:2}
+  .why .eyebrow{color:var(--yellow)}.why .eyebrow::before{background:var(--yellow)}
+  .why .g{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:46px}
+  .why .i .n{font-size:46px;font-weight:900;color:var(--orange)}
+  .why .i h4{font-size:16px;font-weight:700;margin:6px 0}
+  .why .i p{font-size:14px;color:rgba(255,255,255,.72)}
+
+  /* ===== CTA (синий -> оранжевый градиент) ===== */
+  .cta{position:relative;overflow:hidden;border-radius:26px;margin:0 24px;padding:70px 40px;text-align:center;color:#fff;background:linear-gradient(120deg,#1d2a52 0%,#32487D 40%,#FE6A00 100%)}
+  .cta::after{content:"";position:absolute;width:300px;height:300px;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;right:-70px;top:-70px}
+  .cta h2{color:#fff}.cta p{max-width:520px;margin:14px auto 30px;font-size:18px;color:rgba(255,255,255,.92)}
+  .cta .btn-white{background:#fff;color:var(--orange-deep)}.cta .btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy);color:#fff;padding:60px 0 30px}
+  .fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:30px}
+  footer h5{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#8a9099;margin-bottom:16px}
+  footer ul{list-style:none}footer li{margin-bottom:10px}
+  footer a{color:#cfd3d9;font-size:15px}footer a:hover{color:var(--orange)}
+  .fb{border-top:1px solid rgba(255,255,255,.12);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;color:#8a9099;font-size:14px;flex-wrap:wrap;gap:10px}
+
+  /* ===== Reveal ===== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:980px){
+    section{padding:60px 0}
+    .menu{display:none}.burger{display:block}
+    .hero .wrap{min-height:auto;padding:120px 24px 70px}
+    .hero-lower{grid-template-columns:1fr;gap:34px;margin-top:28px}
+    .hero h1{font-size:clamp(34px,8vw,54px);letter-spacing:-1px}
+    .data-orb{display:none}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);gap:30px}
+    .dir-grid,.mega-grid{grid-template-columns:repeat(2,1fr)}
+    .why .g{grid-template-columns:repeat(2,1fr)}
+    .clients .logos{grid-template-columns:repeat(3,1fr)}
+    .fg{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){.dir-grid{grid-template-columns:1fr}.clients .logos{grid-template-columns:repeat(2,1fr)}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="#why">О компании</a>
+      <a href="#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <canvas id="net"></canvas>
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> №1 по BI и Big Data в России</div>
+    <h1>Внедряем решения<br><span class="ac">BI и&nbsp;Big&nbsp;Data</span><br>в&nbsp;России</h1>
+    <div class="hero-lower">
+      <div class="hero-copy">
+        <p class="sub">От&nbsp;хранилищ и&nbsp;аналитики до&nbsp;машинного обучения и&nbsp;роботизации процессов — превращаем большие данные в&nbsp;решения для&nbsp;бизнеса.</p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary">Получить консультацию <span class="ar">→</span></a>
+          <a href="#directions" class="btn btn-glass">Наши направления</a>
+        </div>
+        <div class="hero-trust">
+          <span>Нам доверяют:</span>
+          <span class="names"><b>Сбер</b><b>ВТБ</b><b>X5</b><b>МТС</b><b>Магнит</b></span>
+        </div>
+      </div>
+      <!-- акцент: AI-агент, который пишет код -->
+      <div class="data-orb">
+      <div class="ring"></div><div class="ring ring2"></div>
+      <div class="term">
+        <div class="term-bar">
+          <i class="rd"></i><i class="yl"></i><i class="gn"></i>
+          <span class="tt">🤖 <span class="ai">ai-agent</span> · online</span>
+        </div>
+        <pre class="code"><code id="code"></code><span class="cursor"></span></pre>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats ===== -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n" data-count="2000" data-suffix="+">0</div><div class="l">экспертов</div></div>
+    <div class="stat"><div class="n" data-count="17">0</div><div class="l">практик</div></div>
+    <div class="stat"><div class="n" data-count="400" data-suffix="+">0</div><div class="l">клиентов</div></div>
+    <div class="stat"><div class="n" data-count="20">0</div><div class="l">лет на рынке</div></div>
+  </div>
+</div>
+
+<!-- ===== Направления ===== -->
+<section id="directions">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Что мы делаем</span>
+      <h2>Направления бизнеса</h2>
+      <p class="lead">17 практик в области данных — наведите курсор, чтобы узнать больше о каждом направлении.</p>
+    </div>
+    <div class="dir-grid reveal" id="dirGrid"></div>
+  </div>
+</section>
+
+<!-- ===== Clients ===== -->
+<section id="clients" class="clients">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="justify-content:center">400+ клиентов</span>
+    <h2>Нам доверяют лидеры рынка</h2>
+    <div class="logos">
+      <div class="logo-cell" style="--c:#21A038"><img src="assets/clients/sber.svg" alt="Сбер" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#E30611"><img src="assets/clients/mts.svg" alt="МТС" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#7700FF"><img src="assets/clients/rostelecom.svg" alt="Ростелеком" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#EE1C25"><img src="assets/clients/rosbank.svg" alt="Росбанк" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#1A3E8C"><img src="assets/clients/uralsib.svg" alt="Уралсиб" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#009FDF"><img src="assets/clients/vtb.svg" alt="ВТБ" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+
+      <div class="logo-cell" style="--c:#E4002B"><img src="assets/clients/renaissance.svg" alt="Ренессанс Кредит" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#111111"><img src="assets/clients/tinkoff.svg" alt="Тинькофф" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#E4002B"><img src="assets/clients/homecredit.svg" alt="Home Credit Bank" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#00447C"><img src="assets/clients/gazprombank.svg" alt="Газпромбанк" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#003D7C"><img src="assets/clients/nlmk.svg" alt="НЛМК" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#ED1C24"><img src="assets/clients/x5.svg" alt="X5 Retail Group" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+
+      <div class="logo-cell" style="--c:#002E5D"><img src="assets/clients/pochtabank.svg" alt="Почта Банк" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#1976D2"><img src="assets/clients/vsk.svg" alt="ВСК" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#00857C"><img src="assets/clients/sibur.svg" alt="СИБУР" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#E4002B"><img src="assets/clients/bspb.svg" alt="Банк Санкт-Петербург" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#F26522"><img src="assets/clients/soyuz.svg" alt="Банк Союз" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#6B2737"><img src="assets/clients/rosevrobank.svg" alt="РосЕвроБанк" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+
+      <div class="logo-cell" style="--c:#0075C9"><img src="assets/clients/bcs.svg" alt="БКС" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#0033A0"><img src="assets/clients/vostochny.svg" alt="Восточный банк" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#E4002B"><img src="assets/clients/tricolor.svg" alt="Триколор" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#F5A800"><img src="assets/clients/utkonos.svg" alt="Утконос" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#00BEF0"><img src="assets/clients/otkritie.svg" alt="Открытие" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+      <div class="logo-cell" style="--c:#006B3F"><img src="assets/clients/rshb.svg" alt="Россельхозбанк" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why ===== -->
+<section id="why" class="why">
+  <div class="wrap reveal">
+    <span class="eyebrow">Почему GlowByte</span>
+    <h2>Экспертиза, подтверждённая результатом</h2>
+    <div class="g">
+      <div class="i"><div class="n">№1</div><h4>Лидер BI и Big Data</h4><p>Крупнейший игрок рынка аналитики и больших данных в РФ и СНГ.</p></div>
+      <div class="i"><div class="n">2000+</div><h4>Экспертов</h4><p>Инженеры, аналитики, архитекторы и Data Scientist'ы.</p></div>
+      <div class="i"><div class="n">17</div><h4>Практик</h4><p>Полный цикл работы с данными в одном партнёре.</p></div>
+      <div class="i"><div class="n">20</div><h4>Лет на рынке</h4><p>Проекты в банках, ритейле, телекоме, промышленности.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Готовы обсудить ваш проект?</h2>
+    <p>Бесплатная консультация — оценим задачу и предложим решение на данных.</p>
+    <a href="mailto:contact@gbconsulting.ru" class="btn btn-white">Оставить заявку</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="contacts">
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="#directions">Business Intelligence</a></li>
+        <li><a href="#directions">DWH — хранилища данных</a></li>
+        <li><a href="#directions">Advanced Analytics</a></li>
+        <li><a href="#directions">Risk Management</a></li>
+        <li><a href="#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul><li><a href="#why">О нас</a></li><li><a href="#clients">Клиенты</a></li><li><a href="blog.html">Блог</a></li><li><a href="events.html">Мероприятия</a></li><li><a href="#cta">Контакты</a></li></ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:contact@gbconsulting.ru">contact@gbconsulting.ru</a></li>
+        <li><a href="#">Москва, Нижний Сусальный пер., 5с19, оф. 307</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb"><span>© 2026 GlowByte Consulting. Все права защищены.</span><a href="#">Политика конфиденциальности</a></div>
+</footer>
+
+<script>
+  const C = ['#FE6A00','#337D76','#FFB000','#32487D'];
+  const DIRECTIONS = [
+    ['Advanced Analytics','Продвинутая аналитика, ML и ИИ для оптимальных бизнес-решений'],
+    ['Risk Management & Compliance','Автоматизация управления рисками и регуляторных требований'],
+    ['Marketing Management','Клиентская аналитика и автоматизация маркетинга'],
+    ['Marketing Service Provider','Бизнес-консалтинг и аналитика для CRM-маркетинга'],
+    ['Business Intelligence','Визуализация данных на новом уровне'],
+    ['Финансовая аналитика','Решения для эффективности управления — CPM'],
+    ['Customer Experience','Изучаем клиентский опыт и собираем обратную связь'],
+    ['Business Process Management','Развитие процессной зрелости компании, BPM'],
+    ['Retail Solutions','Промышленные решения для коммерческой функции ритейла'],
+    ['Промышленный IoT','Предиктивная аналитика и цифровые советники для производства'],
+    ['Страховые компании','IT-решения для процессов страховых на основе ИИ'],
+    ['Process & Task Mining','Реальная картина работы процессов и отделов'],
+    ['Data Governance','Управление данными: качество, метаданные, НСИ'],
+    ['Value Added Reseller','Официальный поставщик лицензионного ПО'],
+    ['DWH — хранилища данных','Сбор, обработка и анализ исторических данных'],
+    ['RPA','Роботизация рутинных бизнес-процессов'],
+    ['Заказная разработка','Разработка ПО под задачи бизнеса: модули, интеграции, совместная разработка'],
+  ];
+  const dirGrid = document.getElementById('dirGrid'), megaGrid = document.getElementById('megaGrid');
+  DIRECTIONS.forEach(([t,d],i)=>{
+    const c = C[i % C.length];
+    const card = document.createElement('a');
+    card.href='#cta'; card.className='dir'; card.style.setProperty('--c',c);
+    card.innerHTML = `<div class="cube"></div><h3>${t}</h3><p>${d}</p><span class="go">→</span>`;
+    dirGrid.appendChild(card);
+    const mi = document.createElement('a');
+    mi.href='#directions'; mi.className='mega-item';
+    mi.innerHTML = `<span class="cube" style="background:${c}"></span><div><div class="mt">${t}</div><div class="md">${d}</div></div>`;
+    megaGrid.appendChild(mi);
+  });
+
+  /* ===== IT-фон: печатная плата (PCB) с бегущими сигналами ===== */
+  (function(){
+    const cv = document.getElementById('net'), ctx = cv.getContext('2d');
+    const hero = document.querySelector('.hero');
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    let W,H,DPR,raf, traces, pads, pulses;
+
+    function buildLen(tr){              // длины сегментов полилинии трассы
+      let total=0; const seg=[];
+      for(let i=1;i<tr.pts.length;i++){
+        const a=tr.pts[i-1], b=tr.pts[i];
+        const l=Math.hypot(b.x-a.x,b.y-a.y); seg.push(l); total+=l;
+      }
+      tr.seg=seg; tr.len=total;
+    }
+    function pointAt(tr,d){             // точка на трассе на расстоянии d от начала
+      for(let i=0;i<tr.seg.length;i++){
+        if(d<=tr.seg[i]){
+          const a=tr.pts[i], b=tr.pts[i+1], t=tr.seg[i]?d/tr.seg[i]:0;
+          return {x:a.x+(b.x-a.x)*t, y:a.y+(b.y-a.y)*t};
+        }
+        d-=tr.seg[i];
+      }
+      const p=tr.pts[tr.pts.length-1]; return {x:p.x,y:p.y};
+    }
+    function spawn(){                   // запустить сигнал на случайной трассе
+      const tr=traces[Math.floor(Math.random()*traces.length)];
+      return {tr, d:0, sp:.7+Math.random()*1.4, warm:Math.random()<.5};
+    }
+
+    function size(){
+      DPR = Math.min(devicePixelRatio||1, 2);
+      W = hero.clientWidth; H = hero.clientHeight;
+      cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+      const gap = W<700?70:98;                         // шаг сетки платы
+      const cols=Math.ceil(W/gap)+1, rows=Math.ceil(H/gap)+1;
+      // площадки-узлы на сетке с лёгким джиттером
+      pads=[]; const grid=[];
+      for(let r=0;r<rows;r++){ grid[r]=[]; for(let c=0;c<cols;c++){
+        const jx=(Math.random()-.5)*gap*.32, jy=(Math.random()-.5)*gap*.32;
+        const p={x:c*gap+jx, y:r*gap+jy}; grid[r][c]=p; pads.push(p);
+      }}
+      // трассы: Г-образные соединения с соседом справа/снизу (как разводка платы)
+      traces=[];
+      function add(a,b){
+        const corner = Math.random()<.5 ? {x:b.x,y:a.y} : {x:a.x,y:b.y};
+        const tr={pts:[a,corner,b], hot:Math.random()<.15};
+        buildLen(tr); traces.push(tr);
+      }
+      for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+        if(c+1<cols && Math.random()<.6) add(grid[r][c], grid[r][c+1]);
+        if(r+1<rows && Math.random()<.6) add(grid[r][c], grid[r+1][c]);
+      }
+      // сигналы, бегущие по трассам
+      const np=Math.max(10, Math.min(32, Math.round(traces.length*.1)));
+      pulses=Array.from({length:np}, spawn);
+    }
+
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      ctx.lineCap='round'; ctx.lineJoin='round';
+      // дорожки платы — тонкие, спокойные
+      ctx.lineWidth=1;
+      for(const tr of traces){
+        ctx.strokeStyle = tr.hot ? 'rgba(254,106,0,.18)' : 'rgba(120,150,210,.16)';
+        ctx.beginPath(); ctx.moveTo(tr.pts[0].x,tr.pts[0].y);
+        for(let i=1;i<tr.pts.length;i++) ctx.lineTo(tr.pts[i].x,tr.pts[i].y);
+        ctx.stroke();
+      }
+      // пэды — квадратики на узлах
+      ctx.fillStyle='rgba(150,178,235,.30)';
+      for(const p of pads) ctx.fillRect(p.x-1.5,p.y-1.5,3,3);
+      // сигналы: светящаяся голова с затухающим хвостом вдоль трассы
+      for(const pu of pulses){
+        pu.d += pu.sp;
+        if(pu.d > pu.tr.len) Object.assign(pu, spawn());
+        const head=pointAt(pu.tr, pu.d);
+        const tail=pointAt(pu.tr, Math.max(0, pu.d-24));
+        const col = pu.warm ? '255,176,0' : '254,106,0';
+        const g=ctx.createLinearGradient(tail.x,tail.y,head.x,head.y);
+        g.addColorStop(0,`rgba(${col},0)`); g.addColorStop(1,`rgba(${col},.9)`);
+        ctx.strokeStyle=g; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.moveTo(tail.x,tail.y); ctx.lineTo(head.x,head.y); ctx.stroke();
+        ctx.beginPath(); ctx.arc(head.x,head.y,2.4,0,7);
+        ctx.fillStyle=`rgb(${col})`; ctx.shadowColor=`rgba(${col},.9)`; ctx.shadowBlur=10; ctx.fill();
+        ctx.shadowBlur=0;
+      }
+      raf=requestAnimationFrame(frame);
+    }
+    size();
+    if(reduce){ frame(); cancelAnimationFrame(raf); } else frame();
+    let t; addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{cancelAnimationFrame(raf);size();if(!reduce)frame();},200);});
+  })();
+
+  /* ===== AI-агент печатает код (typewriter) ===== */
+  (function(){
+    const el = document.getElementById('code');
+    if(!el) return;
+    const SRC = `import glowbyte as gb
+
+model = gb.train(big_data)
+# AI-агент учится на данных
+pred = model.predict(X)
+print("точность", 0.987)`;
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    function hl(s){
+      return esc(s)
+        .replace(/(#[^\n]*)/g,"<span class='c'>$1</span>")
+        .replace(/("[^"\n]*")/g,"<span class='s'>$1</span>")
+        .replace(/\b(import|as|def|return|print|for|in|if)\b/g,"<span class='k'>$1</span>")
+        .replace(/\b(\d+\.?\d*)\b/g,"<span class='n'>$1</span>");
+    }
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(reduce){ el.innerHTML = hl(SRC); return; }
+    let i = 0;
+    function step(){
+      el.innerHTML = hl(SRC.slice(0,i));
+      if(i < SRC.length){
+        i++;
+        const ch = SRC[i-1];
+        setTimeout(step, ch==='\n' ? 260 : 34 + Math.random()*40);
+      } else {
+        setTimeout(()=>{ i=0; el.innerHTML=''; setTimeout(step,500); }, 2400);
+      }
+    }
+    step();
+  })();
+
+  // тень/фон шапки при скролле
+  const hdr = document.getElementById('hdr');
+  const onScroll = ()=> hdr.classList.toggle('solid', window.scrollY > 60);
+  onScroll(); window.addEventListener('scroll', onScroll);
+
+  // мобильное меню
+  document.getElementById('burger').addEventListener('click', ()=>{
+    const m = document.querySelector('.menu');
+    const open = m.style.display === 'flex';
+    m.style.cssText = open ? '' : 'display:flex;position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:14px 24px;gap:6px;box-shadow:0 20px 40px rgba(0,0,0,.12)';
+    document.querySelectorAll('.menu>a,.menu .has-mega>span').forEach(el=>el.style.color='#15171c');
+  });
+
+  // reveal + count-up
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const cio = new IntersectionObserver((es)=>{es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=+el.dataset.count,suf=el.dataset.suffix||'',dur=1400,t0=performance.now();
+    const tick=(now)=>{const p=Math.min((now-t0)/dur,1),v=Math.floor((1-Math.pow(1-p,3))*target);el.textContent=v.toLocaleString('ru-RU')+suf;if(p<1)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick); cio.unobserve(el);
+  })},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>
