@@ -31,9 +31,10 @@
     });
   }
 
-  // тень/фон шапки при скролле
+  // тень/фон шапки при скролле (на светлых страницах — всегда solid)
   const hdr = document.getElementById('hdr');
-  const onScroll = ()=> hdr.classList.toggle('solid', window.scrollY > 60);
+  const forceSolid = !!document.querySelector('.article-hero');
+  const onScroll = ()=> hdr.classList.toggle('solid', forceSolid || window.scrollY > 60);
   onScroll(); window.addEventListener('scroll', onScroll);
 
   // мобильное меню
