@@ -411,7 +411,7 @@
     ['Risk Management & Compliance','Автоматизация управления рисками и регуляторных требований'],
     ['Marketing Management','Клиентская аналитика и автоматизация маркетинга'],
     ['Marketing Service Provider','Бизнес-консалтинг и аналитика для CRM-маркетинга'],
-    ['Business Intelligence','Визуализация данных на новом уровне'],
+    ['Business Intelligence','Визуализация данных на новом уровне','business-intelligence.html'],
     ['Финансовая аналитика','Решения для эффективности управления — CPM'],
     ['Customer Experience','Изучаем клиентский опыт и собираем обратную связь'],
     ['Business Process Management','Развитие процессной зрелости компании, BPM'],
@@ -421,19 +421,19 @@
     ['Process & Task Mining','Реальная картина работы процессов и отделов'],
     ['Data Governance','Управление данными: качество, метаданные, НСИ'],
     ['Value Added Reseller','Официальный поставщик лицензионного ПО'],
-    ['DWH — хранилища данных','Сбор, обработка и анализ исторических данных'],
+    ['DWH — хранилища данных','Сбор, обработка и анализ исторических данных','dwh.html'],
     ['RPA','Роботизация рутинных бизнес-процессов'],
     ['Заказная разработка','Разработка ПО под задачи бизнеса: модули, интеграции, совместная разработка'],
   ];
   const dirGrid = document.getElementById('dirGrid'), megaGrid = document.getElementById('megaGrid');
-  DIRECTIONS.forEach(([t,d],i)=>{
+  DIRECTIONS.forEach(([t,d,url],i)=>{
     const c = C[i % C.length];
     const card = document.createElement('a');
-    card.href='#cta'; card.className='dir'; card.style.setProperty('--c',c);
+    card.href = url || '#cta'; card.className='dir'; card.style.setProperty('--c',c);
     card.innerHTML = `<div class="cube"></div><h3>${t}</h3><p>${d}</p><span class="go">→</span>`;
     dirGrid.appendChild(card);
     const mi = document.createElement('a');
-    mi.href='#directions'; mi.className='mega-item';
+    mi.href = url || '#directions'; mi.className='mega-item';
     mi.innerHTML = `<span class="cube" style="background:${c}"></span><div><div class="mt">${t}</div><div class="md">${d}</div></div>`;
     megaGrid.appendChild(mi);
   });
@@ -590,22 +590,54 @@ print("точность", 0.987)`;
   })},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
-  // форма обратной связи → открывает письмо с заполненными полями
+  /* ===== форма обратной связи ===== */
+  // 1) Вставьте сюда URL входящего вебхука из коннектора (ApiX-Drive / Albato / Make),
+  //    который добавляет строку в Яндекс Таблицу. Пока пусто — форма открывает письмо (mailto).
+  const LEAD_WEBHOOK = '';
+
   const leadForm = document.getElementById('leadForm');
   if(leadForm){
     leadForm.addEventListener('submit',(e)=>{
       e.preventDefault();
       const val = (id)=> (leadForm.querySelector(id)?.value || '').trim();
-      const name=val('#lf-name'), company=val('#lf-company'), phone=val('#lf-phone'), email=val('#lf-email'), question=val('#lf-question');
-      const subject = 'Заявка с сайта' + (company ? ' — ' + company : '');
-      const body = [
-        'Имя: ' + name,
-        'Компания: ' + company,
-        'Телефон: ' + phone,
-        'Почта: ' + email,
-        'Вопрос: ' + question
-      ].join('\n');
-      window.location.href = 'mailto:contact@gbconsulting.ru?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      const data = {
+        name:    val('#lf-name'),
+        company: val('#lf-company'),
+        phone:   val('#lf-phone'),
+        email:   val('#lf-email'),
+        question:val('#lf-question')
+      };
+
+      const done = (ok)=>{
+        const note = leadForm.querySelector('.cta-note');
+        if(note){
+          note.textContent = ok
+            ? '✓ Заявка отправлена! Мы свяжемся с вами в течение рабочего дня.'
+            : 'Не удалось отправить. Напишите нам на contact@gbconsulting.ru';
+          note.style.fontWeight = '700';
+        }
+        if(ok){ leadForm.reset(); }
+      };
+
+      if(LEAD_WEBHOOK){
+        const btn = leadForm.querySelector('button[type="submit"]');
+        if(btn){ btn.disabled = true; btn.style.opacity = '.7'; }
+        // form-urlencoded — «простой» запрос, проходит без CORS-префлайта
+        fetch(LEAD_WEBHOOK, {
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'application/x-www-form-urlencoded'},
+          body:new URLSearchParams(data)
+        })
+        .then(()=>done(true))
+        .catch(()=>done(false))
+        .finally(()=>{ if(btn){ btn.disabled=false; btn.style.opacity='1'; } });
+      } else {
+        // запасной вариант, пока вебхук не задан — открыть письмо
+        const subject = 'Заявка с сайта' + (data.company ? ' — ' + data.company : '');
+        const body = ['Имя: '+data.name,'Компания: '+data.company,'Телефон: '+data.phone,'Почта: '+data.email,'Вопрос: '+data.question].join('\n');
+        window.location.href = 'mailto:contact@gbconsulting.ru?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }
     });
   }
 </script>

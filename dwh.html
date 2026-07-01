@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DWH — хранилища данных — GlowByte</title>
+<meta name="description" content="DWH от GlowByte: проектирование и внедрение корпоративных хранилищ данных, витрин и потоковой обработки.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="index.html#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="index.html#why">О компании</a>
+      <a href="index.html#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="index.html#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page hero ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">Направление · DWH</div>
+    <h1>DWH — <span class="ac">хранилища данных</span></h1>
+    <p class="lead">Строим корпоративные хранилища и озёра данных: собираем, очищаем и объединяем информацию из всех систем компании в надёжный фундамент для аналитики и AI.</p>
+    <div style="margin-top:26px"><a href="index.html#cta" class="btn btn-white">Обсудить проект <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- ===== О направлении ===== -->
+<section class="dir-sec">
+  <div class="wrap dir-lead-row reveal">
+    <div>
+      <span class="eyebrow">Что мы делаем</span>
+      <h2>Сбор, обработка и анализ данных</h2>
+      <p>Проектируем архитектуру хранилища под ваши объёмы и задачи — от классического DWH до Lakehouse и потоковой обработки. Наводим порядок в данных, чтобы отчётность и модели строились на едином достоверном источнике.</p>
+      <ul class="checklist">
+        <li>Проектирование архитектуры DWH / Data Lake / Lakehouse</li>
+        <li>ETL/ELT-процессы и интеграция источников</li>
+        <li>Потоковая обработка данных (near real-time)</li>
+        <li>Оптимизация производительности и стоимости хранения</li>
+        <li>Мониторинг качества и надёжности загрузок</li>
+      </ul>
+    </div>
+    <aside class="dir-aside">
+      <h4>Технологии</h4>
+      <div class="kv"><span>Хранилища</span><b>Greenplum, ClickHouse, PostgreSQL</b></div>
+      <div class="kv"><span>Big Data</span><b>Hadoop, Spark, Kafka</b></div>
+      <div class="kv"><span>Оркестрация</span><b>Apache Airflow</b></div>
+      <div class="kv"><span>Подход</span><b>DWH · Data Lake · Lakehouse</b></div>
+      <div class="kv"><span>Формат</span><b>Проект «под ключ» / усиление команды</b></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== Наши решения (pop-up) ===== -->
+<section class="dir-sec alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Наши решения</span>
+    <h2>Что можно построить</h2>
+    <div class="sol-grid">
+      <button class="sol-card" data-modal-open="m-dwh-1">
+        <div class="sc-ico">🏛</div>
+        <h3>Корпоративное хранилище</h3>
+        <p>Единый DWH как источник правды для всей отчётности компании.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dwh-2">
+        <div class="sc-ico">🌊</div>
+        <h3>Data Lake / Lakehouse</h3>
+        <p>Хранение больших и разнородных данных для аналитики и ML.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dwh-3">
+        <div class="sc-ico">🔌</div>
+        <h3>ETL/ELT-конвейеры</h3>
+        <p>Надёжные процессы загрузки и трансформации данных.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-dwh-4">
+        <div class="sc-ico">⏱</div>
+        <h3>Данные в реальном времени</h3>
+        <p>Потоковая обработка событий на Kafka + Spark.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Результаты ===== -->
+<section class="dir-sec">
+  <div class="wrap reveal">
+    <span class="eyebrow">Результаты</span>
+    <h2>Что получает бизнес</h2>
+    <div class="ben-grid">
+      <div class="ben"><div class="bn">1</div><h4>Источник правды</h4><p>Все данные компании в одном согласованном месте.</p></div>
+      <div class="ben"><div class="bn">×10</div><h4>Скорость запросов</h4><p>Оптимизированные витрины вместо тяжёлых выгрузок.</p></div>
+      <div class="ben"><div class="bn">near&nbsp;RT</div><h4>Актуальность</h4><p>Данные обновляются почти в реальном времени.</p></div>
+      <div class="ben"><div class="bn">100%</div><h4>Готовность к AI</h4><p>Чистые данные — фундамент для ML и аналитики.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Нужно хранилище данных?</h2>
+    <p>Спроектируем архитектуру под ваши объёмы и задачи — от пилота до промышленного DWH.</p>
+    <a href="index.html#cta" class="btn btn-white">Оставить заявку</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="contacts">
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="business-intelligence.html">Business Intelligence</a></li>
+        <li><a href="dwh.html">DWH — хранилища данных</a></li>
+        <li><a href="index.html#directions">Advanced Analytics</a></li>
+        <li><a href="index.html#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="index.html#why">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="events.html">Мероприятия</a></li>
+        <li><a href="index.html#cta">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:contact@gbconsulting.ru">contact@gbconsulting.ru</a></li>
+        <li><a href="#">Москва, Нижний Сусальный пер., 5с19, оф. 307</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb"><span>© 2026 GlowByte Consulting. Все права защищены.</span><a href="#">Политика конфиденциальности</a></div>
+</footer>
+
+<!-- ===== Pop-up окна решений ===== -->
+<div class="modal" id="m-dwh-1"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🏛</div>
+  <h3>Корпоративное хранилище</h3>
+  <p>Единый DWH, куда стекаются данные из всех систем компании и откуда питается вся отчётность и аналитика.</p>
+  <ul>
+    <li>Модель данных и слой витрин</li>
+    <li>Историчность и версионирование данных</li>
+    <li>Разграничение доступа и безопасность</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dwh-2"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🌊</div>
+  <h3>Data Lake / Lakehouse</h3>
+  <p>Хранилище для больших и разнородных данных — логи, события, файлы — с возможностью аналитики и обучения моделей поверх.</p>
+  <ul>
+    <li>Хранение сырых и обработанных данных</li>
+    <li>Каталог данных и управление доступом</li>
+    <li>Интеграция с ML-пайплайнами</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dwh-3"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🔌</div>
+  <h3>ETL/ELT-конвейеры</h3>
+  <p>Проектируем и автоматизируем процессы загрузки данных из источников с контролем качества на каждом шаге.</p>
+  <ul>
+    <li>Интеграция ERP, CRM, учётных и внешних систем</li>
+    <li>Оркестрация на Apache Airflow</li>
+    <li>Мониторинг и оповещения о сбоях загрузок</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-dwh-4"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">⏱</div>
+  <h3>Данные в реальном времени</h3>
+  <p>Потоковая обработка событий для сценариев, где важна свежесть данных — мониторинг, антифрод, оперативные дашборды.</p>
+  <ul>
+    <li>Потоки на Apache Kafka</li>
+    <li>Обработка на Spark Streaming</li>
+    <li>Near real-time витрины для BI</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

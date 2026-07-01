@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Intelligence — GlowByte</title>
+<meta name="description" content="Business Intelligence от GlowByte: дашборды, отчётность и визуализация данных для управления на основе данных.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="index.html#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="index.html#why">О компании</a>
+      <a href="index.html#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="index.html#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page hero ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">Направление · BI</div>
+    <h1>Business <span class="ac">Intelligence</span></h1>
+    <p class="lead">Превращаем разрозненные данные в наглядные дашборды и отчётность, на которые опирается управление компанией — от операционных метрик до стратегии.</p>
+    <div style="margin-top:26px"><a href="index.html#cta" class="btn btn-white">Обсудить проект <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- ===== О направлении ===== -->
+<section class="dir-sec">
+  <div class="wrap dir-lead-row reveal">
+    <div>
+      <span class="eyebrow">Что мы делаем</span>
+      <h2>Визуализация данных на новом уровне</h2>
+      <p>Мы проектируем и внедряем BI-платформы под задачи бизнеса: собираем данные из разных источников, приводим их к единой модели и превращаем в интерактивные дашборды. Пользователи получают самообслуживание в аналитике, а руководители — единую версию правды.</p>
+      <ul class="checklist">
+        <li>Аудит источников данных и постановка метрик</li>
+        <li>Проектирование модели данных и витрин</li>
+        <li>Интерактивные дашборды и регламентная отчётность</li>
+        <li>Self-service аналитика для бизнес-пользователей</li>
+        <li>Обучение команды и поддержка после запуска</li>
+      </ul>
+    </div>
+    <aside class="dir-aside">
+      <h4>Платформы</h4>
+      <div class="kv"><span>Отечественные BI</span><b>Visiology, FineBI, Analytic Workspace</b></div>
+      <div class="kv"><span>Мировые</span><b>Power BI, Tableau, Qlik</b></div>
+      <div class="kv"><span>Open source</span><b>Apache Superset, Metabase</b></div>
+      <div class="kv"><span>Формат работы</span><b>Проект «под ключ» / усиление команды</b></div>
+      <div class="kv"><span>Отрасли</span><b>Банки, ритейл, телеком, промышленность</b></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== Наши решения (pop-up) ===== -->
+<section class="dir-sec alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Наши решения</span>
+    <h2>Что можно внедрить</h2>
+    <div class="sol-grid">
+      <button class="sol-card" data-modal-open="m-bi-1">
+        <div class="sc-ico">📊</div>
+        <h3>Управленческие дашборды</h3>
+        <p>Единая панель ключевых показателей для руководства в реальном времени.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-bi-2">
+        <div class="sc-ico">🧩</div>
+        <h3>Витрины и модель данных</h3>
+        <p>Надёжный слой данных, на котором строится вся отчётность.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-bi-3">
+        <div class="sc-ico">⚡</div>
+        <h3>Self-service аналитика</h3>
+        <p>Бизнес сам собирает отчёты без обращения к ИТ.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+      <button class="sol-card" data-modal-open="m-bi-4">
+        <div class="sc-ico">🔄</div>
+        <h3>Миграция с зарубежных BI</h3>
+        <p>Переезд с Power BI / Tableau / Qlik на отечественные платформы.</p>
+        <span class="sc-more">Подробнее →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Результаты ===== -->
+<section class="dir-sec">
+  <div class="wrap reveal">
+    <span class="eyebrow">Результаты</span>
+    <h2>Что получает бизнес</h2>
+    <div class="ben-grid">
+      <div class="ben"><div class="bn">−70%</div><h4>Времени на отчёты</h4><p>Ручная подготовка отчётности заменяется автообновлением.</p></div>
+      <div class="ben"><div class="bn">1</div><h4>Версия правды</h4><p>Все подразделения смотрят на одни и те же данные.</p></div>
+      <div class="ben"><div class="bn">24/7</div><h4>Доступ к данным</h4><p>Дашборды доступны с любого устройства в любой момент.</p></div>
+      <div class="ben"><div class="bn">100%</div><h4>Импортонезависимость</h4><p>Работаем на отечественных BI-платформах.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Нужен BI под ваши задачи?</h2>
+    <p>Оценим данные и предложим решение — от пилотного дашборда до платформы на всю компанию.</p>
+    <a href="index.html#cta" class="btn btn-white">Оставить заявку</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="contacts">
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="business-intelligence.html">Business Intelligence</a></li>
+        <li><a href="dwh.html">DWH — хранилища данных</a></li>
+        <li><a href="index.html#directions">Advanced Analytics</a></li>
+        <li><a href="index.html#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="index.html#why">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="events.html">Мероприятия</a></li>
+        <li><a href="index.html#cta">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:contact@gbconsulting.ru">contact@gbconsulting.ru</a></li>
+        <li><a href="#">Москва, Нижний Сусальный пер., 5с19, оф. 307</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb"><span>© 2026 GlowByte Consulting. Все права защищены.</span><a href="#">Политика конфиденциальности</a></div>
+</footer>
+
+<!-- ===== Pop-up окна решений ===== -->
+<div class="modal" id="m-bi-1"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">📊</div>
+  <h3>Управленческие дашборды</h3>
+  <p>Единая интерактивная панель с ключевыми показателями бизнеса — выручка, маржа, воронка, операционные метрики — с обновлением в реальном времени.</p>
+  <ul>
+    <li>Согласование состава метрик с руководством</li>
+    <li>Дизайн дашбордов по принципам data storytelling</li>
+    <li>Drill-down до уровня операции или клиента</li>
+    <li>Разграничение доступа по ролям</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-bi-2"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🧩</div>
+  <h3>Витрины и модель данных</h3>
+  <p>Проектируем слой витрин, на котором строится вся отчётность: единые справочники, понятные метрики, документированная модель.</p>
+  <ul>
+    <li>Сбор данных из ERP, CRM, учётных систем</li>
+    <li>Единая модель и бизнес-глоссарий</li>
+    <li>Оптимизация под скорость отчётов</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-bi-3"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">⚡</div>
+  <h3>Self-service аналитика</h3>
+  <p>Даём бизнес-пользователям инструмент, чтобы собирать отчёты и проверять гипотезы самостоятельно — без очереди в ИТ.</p>
+  <ul>
+    <li>Подготовка «сертифицированных» наборов данных</li>
+    <li>Шаблоны и обучение пользователей</li>
+    <li>Контроль качества и версионирование</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<div class="modal" id="m-bi-4"><div class="modal-box">
+  <button class="m-close" data-modal-close aria-label="Закрыть">×</button>
+  <div class="m-ico">🔄</div>
+  <h3>Миграция с зарубежных BI</h3>
+  <p>Переносим отчётность с Power BI, Tableau или Qlik на отечественные платформы без потери функциональности.</p>
+  <ul>
+    <li>Инвентаризация текущих отчётов и источников</li>
+    <li>Перенос модели данных и визуализаций</li>
+    <li>Параллельный запуск и сверка результатов</li>
+  </ul>
+  <a href="index.html#cta" class="btn btn-primary" data-modal-close>Обсудить <span class="ar">→</span></a>
+</div></div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

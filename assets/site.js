@@ -6,7 +6,7 @@
     ['Risk Management & Compliance','Автоматизация управления рисками и регуляторных требований'],
     ['Marketing Management','Клиентская аналитика и автоматизация маркетинга'],
     ['Marketing Service Provider','Бизнес-консалтинг и аналитика для CRM-маркетинга'],
-    ['Business Intelligence','Визуализация данных на новом уровне'],
+    ['Business Intelligence','Визуализация данных на новом уровне','business-intelligence.html'],
     ['Финансовая аналитика','Решения для эффективности управления — CPM'],
     ['Customer Experience','Изучаем клиентский опыт и собираем обратную связь'],
     ['Business Process Management','Развитие процессной зрелости компании, BPM'],
@@ -16,16 +16,16 @@
     ['Process & Task Mining','Реальная картина работы процессов и отделов'],
     ['Data Governance','Управление данными: качество, метаданные, НСИ'],
     ['Value Added Reseller','Официальный поставщик лицензионного ПО'],
-    ['DWH — хранилища данных','Сбор, обработка и анализ исторических данных'],
+    ['DWH — хранилища данных','Сбор, обработка и анализ исторических данных','dwh.html'],
     ['RPA','Роботизация рутинных бизнес-процессов'],
     ['Заказная разработка','Разработка ПО под задачи бизнеса: модули, интеграции, совместная разработка'],
   ];
   const megaGrid = document.getElementById('megaGrid');
   if(megaGrid){
-    DIRECTIONS.forEach(([t,d],i)=>{
+    DIRECTIONS.forEach(([t,d,url],i)=>{
       const c = C[i % C.length];
       const mi = document.createElement('a');
-      mi.href = 'index.html#directions'; mi.className = 'mega-item';
+      mi.href = url || 'index.html#directions'; mi.className = 'mega-item';
       mi.innerHTML = `<span class="cube" style="background:${c}"></span><div><div class="mt">${t}</div><div class="md">${d}</div></div>`;
       megaGrid.appendChild(mi);
     });
@@ -62,4 +62,22 @@
       });
     }));
   });
+
+  // pop-up окна (решения направлений)
+  const closeModals = ()=>{
+    document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('[data-modal-open]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const m = document.getElementById(btn.getAttribute('data-modal-open'));
+      if(m){ m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    });
+  });
+  document.querySelectorAll('.modal').forEach(m=>{
+    m.addEventListener('click',(e)=>{
+      if(e.target === m || e.target.closest('[data-modal-close]')) closeModals();
+    });
+  });
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeModals(); });
 })();
