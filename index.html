@@ -157,10 +157,22 @@
   .why .i p{font-size:14px;color:rgba(255,255,255,.72)}
 
   /* ===== CTA (синий -> оранжевый градиент) ===== */
-  .cta{position:relative;overflow:hidden;border-radius:26px;margin:0 24px;padding:70px 40px;text-align:center;color:#fff;background:linear-gradient(120deg,#1d2a52 0%,#32487D 40%,#FE6A00 100%)}
-  .cta::after{content:"";position:absolute;width:300px;height:300px;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;right:-70px;top:-70px}
-  .cta h2{color:#fff}.cta p{max-width:520px;margin:14px auto 30px;font-size:18px;color:rgba(255,255,255,.92)}
-  .cta .btn-white{background:#fff;color:var(--orange-deep)}.cta .btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+  .cta{position:relative;overflow:hidden;border-radius:28px;margin:0 24px;padding:56px 48px;text-align:center;color:#fff;background:linear-gradient(135deg,#FE6A00 0%,#FF8A2B 46%,#FFBE5C 100%)}
+  .cta::after{content:"";position:absolute;width:300px;height:300px;border:1.5px solid rgba(255,255,255,.4);border-radius:50%;right:-80px;top:-80px}
+  .cta::before{content:"";position:absolute;width:230px;height:230px;border:1.5px solid rgba(255,255,255,.3);border-radius:50%;left:-70px;bottom:-80px}
+  .cta>*{position:relative;z-index:1}
+  .cta h2{color:#fff}.cta p{max-width:540px;margin:14px auto 4px;font-size:18px;color:rgba(255,255,255,.96)}
+  .cta .btn-white{background:#fff;color:var(--orange-deep)}.cta .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.22)}
+  /* форма обратной связи */
+  .cta-form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:720px;margin:30px auto 0;text-align:left}
+  .cta-form .full{grid-column:1 / -1}
+  .cta-form label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#fff}
+  .cta-form input,.cta-form textarea{width:100%;font-family:inherit;font-size:15px;padding:14px 16px;border-radius:12px;border:2px solid transparent;background:rgba(255,255,255,.94);color:#15171c;transition:box-shadow .15s ease,border-color .15s ease}
+  .cta-form input::placeholder,.cta-form textarea::placeholder{color:#9aa2ad}
+  .cta-form input:focus,.cta-form textarea:focus{outline:none;border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.4)}
+  .cta-form textarea{min-height:106px;resize:vertical}
+  .cta-form .btn{grid-column:1 / -1;justify-self:center;margin-top:4px}
+  .cta-note{grid-column:1 / -1;text-align:center;font-size:13px;color:rgba(255,255,255,.9);margin-top:2px}
 
   /* ===== Footer ===== */
   footer{background:var(--navy);color:#fff;padding:60px 0 30px}
@@ -187,7 +199,7 @@
     .clients .logos{grid-template-columns:repeat(3,1fr)}
     .fg{grid-template-columns:1fr 1fr}
   }
-  @media(max-width:560px){.dir-grid{grid-template-columns:1fr}.clients .logos{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.dir-grid{grid-template-columns:1fr}.clients .logos{grid-template-columns:repeat(2,1fr)}.cta{padding:40px 22px}.cta-form{grid-template-columns:1fr}}
   @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -328,12 +340,35 @@
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section>
+<!-- ===== CTA / форма обратной связи ===== -->
+<section id="cta">
   <div class="cta reveal">
     <h2>Готовы обсудить ваш проект?</h2>
-    <p>Бесплатная консультация — оценим задачу и предложим решение на данных.</p>
-    <a href="mailto:contact@gbconsulting.ru" class="btn btn-white">Оставить заявку</a>
+    <p>Оставьте заявку — оценим задачу и предложим решение на данных. Ответим в течение рабочего дня.</p>
+    <form class="cta-form" id="leadForm">
+      <div>
+        <label for="lf-name">Имя</label>
+        <input id="lf-name" name="name" type="text" placeholder="Как к вам обращаться" required>
+      </div>
+      <div>
+        <label for="lf-company">Компания</label>
+        <input id="lf-company" name="company" type="text" placeholder="Название компании">
+      </div>
+      <div>
+        <label for="lf-phone">Телефон</label>
+        <input id="lf-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__">
+      </div>
+      <div>
+        <label for="lf-email">Почта</label>
+        <input id="lf-email" name="email" type="email" placeholder="you@company.ru" required>
+      </div>
+      <div class="full">
+        <label for="lf-question">Какой вопрос интересует</label>
+        <textarea id="lf-question" name="question" placeholder="Коротко опишите задачу или вопрос"></textarea>
+      </div>
+      <button type="submit" class="btn btn-white">Отправить заявку <span class="ar">→</span></button>
+      <div class="cta-note">Нажимая «Отправить», вы соглашаетесь с политикой конфиденциальности.</div>
+    </form>
   </div>
 </section>
 
@@ -554,6 +589,25 @@ print("точность", 0.987)`;
     requestAnimationFrame(tick); cio.unobserve(el);
   })},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+  // форма обратной связи → открывает письмо с заполненными полями
+  const leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const val = (id)=> (leadForm.querySelector(id)?.value || '').trim();
+      const name=val('#lf-name'), company=val('#lf-company'), phone=val('#lf-phone'), email=val('#lf-email'), question=val('#lf-question');
+      const subject = 'Заявка с сайта' + (company ? ' — ' + company : '');
+      const body = [
+        'Имя: ' + name,
+        'Компания: ' + company,
+        'Телефон: ' + phone,
+        'Почта: ' + email,
+        'Вопрос: ' + question
+      ].join('\n');
+      window.location.href = 'mailto:contact@gbconsulting.ru?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+  }
 </script>
 </body>
 </html>
