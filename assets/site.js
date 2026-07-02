@@ -81,4 +81,42 @@
     });
   });
   document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeModals(); });
+
+  // ===== Cookie banner =====
+  const CB_KEY = 'gb_cookie_consent';
+  if(!localStorage.getItem(CB_KEY)){
+    const style = document.createElement('style');
+    style.textContent = [
+      '#gb-cookie{position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(20,29,58,.97);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.1);padding:20px 24px;animation:cbUp .35s cubic-bezier(.22,.61,.36,1)}',
+      '@keyframes cbUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}',
+      '.cb-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}',
+      '.cb-text{color:rgba(255,255,255,.88);font-size:14px;font-family:\'Montserrat\',sans-serif;line-height:1.55;flex:1;min-width:260px}',
+      '.cb-text strong{color:#fff;font-weight:700;display:block;margin-bottom:3px;font-size:15px}',
+      '.cb-text a{color:#FE6A00;font-weight:700;text-decoration:underline;text-underline-offset:2px}',
+      '.cb-text a:hover{color:#FFB000}',
+      '.cb-btns{display:flex;gap:10px;flex-shrink:0}',
+      '.cb-btn{font-family:\'Montserrat\',sans-serif;font-weight:700;font-size:14px;padding:11px 22px;border-radius:10px;cursor:pointer;border:0;transition:transform .15s,background .15s,opacity .15s}',
+      '.cb-secondary{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.22)!important}',
+      '.cb-secondary:hover{background:rgba(255,255,255,.18)}',
+      '.cb-primary{background:#FE6A00;color:#fff}',
+      '.cb-primary:hover{background:#e85d00;transform:translateY(-1px)}',
+      '@media(max-width:600px){.cb-inner{flex-direction:column;align-items:flex-start;gap:14px}.cb-btns{width:100%}.cb-btn{flex:1;text-align:center}}',
+    ].join('');
+    document.head.appendChild(style);
+
+    const banner = document.createElement('div');
+    banner.id = 'gb-cookie';
+    banner.innerHTML = '<div class="cb-inner"><div class="cb-text"><strong>Мы используем cookies</strong>Для аналитики и корректной работы сайта (Яндекс.Метрика). <a href="cookies.html">Политика cookies →</a></div><div class="cb-btns"><button class="cb-btn cb-secondary" id="cb-decline">Только необходимые</button><button class="cb-btn cb-primary" id="cb-accept">Принять все</button></div></div>';
+    document.body.appendChild(banner);
+
+    const hide = (val)=>{
+      localStorage.setItem(CB_KEY, val);
+      banner.style.transition = 'transform .3s ease,opacity .3s ease';
+      banner.style.transform = 'translateY(100%)';
+      banner.style.opacity = '0';
+      setTimeout(()=>banner.remove(), 310);
+    };
+    document.getElementById('cb-accept').addEventListener('click', ()=>hide('all'));
+    document.getElementById('cb-decline').addEventListener('click', ()=>hide('necessary'));
+  }
 })();
