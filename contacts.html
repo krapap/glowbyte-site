@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — GlowByte</title>
+<meta name="description" content="Свяжитесь с GlowByte — офисы в Москве и Минске, телефон, почта, соцсети. Обсудим ваш проект.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=2">
+<style>
+/* ===== Офисные карточки ===== */
+.offices{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}
+.office-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:38px;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column}
+.office-card:hover{transform:translateY(-4px);box-shadow:0 24px 52px rgba(20,23,28,.1);border-color:transparent}
+.oc-city{font-size:21px;font-weight:800;letter-spacing:-.4px;margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.oc-row{display:flex;gap:15px;align-items:flex-start;margin-bottom:18px}
+.oc-ico{flex:0 0 auto;width:40px;height:40px;border-radius:11px;background:linear-gradient(140deg,#FE6A00,#FFB000);display:grid;place-items:center;color:#fff;font-size:18px;line-height:1}
+.oc-ico.green{background:linear-gradient(140deg,#337D76,#4aad9e)}
+.oc-body{flex:1;min-width:0}
+.oc-label{font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+.oc-val{font-size:15px;font-weight:600;color:var(--black);line-height:1.5}
+.oc-val a{color:var(--black);transition:color .15s}
+.oc-val a:hover{color:var(--orange)}
+.oc-divider{border:none;border-top:1px solid var(--line);margin:20px 0}
+.oc-map-link{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;color:var(--orange);margin-top:auto;padding-top:16px;transition:gap .15s}
+.oc-map-link:hover{gap:10px}
+
+/* ===== Карта ===== */
+.map-wrap{border-radius:22px;overflow:hidden;height:400px;border:1px solid var(--line);box-shadow:0 12px 40px rgba(20,23,28,.07)}
+.map-wrap iframe{width:100%;height:100%;display:block;border:0}
+
+/* ===== Соцсети ===== */
+.socials-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.social-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 22px;font-weight:700;font-size:15px;color:var(--black);transition:transform .15s,border-color .15s,color .15s,box-shadow .15s}
+.social-btn:hover{transform:translateY(-3px);border-color:var(--orange);color:var(--orange);box-shadow:0 8px 24px rgba(254,106,0,.15)}
+.social-btn .sico{font-size:20px;line-height:1}
+
+/* ===== Карьерный блок ===== */
+.career-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.career-links{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+
+/* ===== Адаптив ===== */
+@media(max-width:800px){
+  .offices{grid-template-columns:1fr}
+  .career-grid{grid-template-columns:1fr;gap:40px}
+  .map-wrap{height:300px}
+}
+@media(max-width:480px){
+  .office-card{padding:26px}
+  .social-btn{padding:11px 16px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="GlowByte">
+      <img class="l-white" src="assets/logo-white.svg" alt="GlowByte">
+      <img class="l-orange" src="assets/logo-orange.svg" alt="GlowByte">
+    </a>
+    <nav class="menu">
+      <div class="has-mega">
+        <span>Направления <span class="chev">▼</span></span>
+        <div class="mega">
+          <div class="mega-head"><h4>17 практик · BI и Big Data</h4><a href="index.html#directions">Все направления →</a></div>
+          <div class="mega-grid" id="megaGrid"></div>
+        </div>
+      </div>
+      <a href="index.html#why">О компании</a>
+      <a href="index.html#clients">Клиенты</a>
+      <a href="blog.html">Блог</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="contacts.html" class="active">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="index.html#cta" class="btn btn-primary" style="padding:11px 22px;font-size:15px">Обсудить проект</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">GlowByte · Россия и Беларусь</div>
+    <h1>Контакты</h1>
+    <p class="lead">Обсудим вашу задачу, ответим на вопросы и&nbsp;поможем выбрать подходящее решение.</p>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+      <a href="tel:+74956406678" class="btn btn-white">📞 +7&nbsp;495&nbsp;640-66-78</a>
+      <a href="mailto:contact@glowbyteconsulting.com" class="btn btn-glass">✉️ Написать письмо</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Офисы ===== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Офисы</span>
+    <h2>Мы здесь</h2>
+    <div class="offices reveal">
+
+      <!-- Москва -->
+      <div class="office-card">
+        <div class="oc-city">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="flex:0 0 auto"><circle cx="14" cy="14" r="14" fill="#d52b1e"/><text x="14" y="19" text-anchor="middle" font-size="14" fill="#fff">🇷🇺</text></svg>
+          Москва
+        </div>
+
+        <div class="oc-row">
+          <div class="oc-ico">📍</div>
+          <div class="oc-body">
+            <div class="oc-label">Адрес</div>
+            <div class="oc-val">105064, Нижний Сусальный переулок, 5с19<br>3&nbsp;этаж, офис 307</div>
+          </div>
+        </div>
+
+        <div class="oc-row">
+          <div class="oc-ico">📞</div>
+          <div class="oc-body">
+            <div class="oc-label">Телефон</div>
+            <div class="oc-val"><a href="tel:+74956406678">+7 495 640-66-78</a></div>
+          </div>
+        </div>
+
+        <div class="oc-row">
+          <div class="oc-ico">✉️</div>
+          <div class="oc-body">
+            <div class="oc-label">Email</div>
+            <div class="oc-val"><a href="mailto:contact@glowbyteconsulting.com">contact@glowbyteconsulting.com</a></div>
+          </div>
+        </div>
+
+        <hr class="oc-divider">
+
+        <div class="oc-row">
+          <div class="oc-ico green">💼</div>
+          <div class="oc-body">
+            <div class="oc-label">Резюме и&nbsp;карьера</div>
+            <div class="oc-val"><a href="mailto:job@glowbyteconsulting.com">job@glowbyteconsulting.com</a></div>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Нижний+Сусальный+переулок+5с19+Москва" target="_blank" rel="noopener" class="oc-map-link">
+          Открыть на карте <span class="ar">→</span>
+        </a>
+      </div>
+
+      <!-- Минск -->
+      <div class="office-card">
+        <div class="oc-city">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="flex:0 0 auto"><circle cx="14" cy="14" r="14" fill="#007934"/><text x="14" y="19" text-anchor="middle" font-size="14" fill="#fff">🇧🇾</text></svg>
+          Минск
+        </div>
+
+        <div class="oc-row">
+          <div class="oc-ico">📍</div>
+          <div class="oc-body">
+            <div class="oc-label">Адрес</div>
+            <div class="oc-val">220073, 1-й Загородный переулок, 20</div>
+          </div>
+        </div>
+
+        <div class="oc-row">
+          <div class="oc-ico">📞</div>
+          <div class="oc-body">
+            <div class="oc-label">Телефон</div>
+            <div class="oc-val"><a href="tel:+375172152455">+375 17 215-24-55</a></div>
+          </div>
+        </div>
+
+        <div class="oc-row">
+          <div class="oc-ico">✉️</div>
+          <div class="oc-body">
+            <div class="oc-label">Email</div>
+            <div class="oc-val"><a href="mailto:contact@glowbyteconsulting.com">contact@glowbyteconsulting.com</a></div>
+          </div>
+        </div>
+
+        <hr class="oc-divider">
+
+        <div class="oc-row">
+          <div class="oc-ico green">💼</div>
+          <div class="oc-body">
+            <div class="oc-label">Резюме и&nbsp;карьера</div>
+            <div class="oc-val"><a href="mailto:hr.minsk@gbconsulting.ru">hr.minsk@gbconsulting.ru</a></div>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=1-й+Загородный+переулок+20+Минск" target="_blank" rel="noopener" class="oc-map-link">
+          Открыть на карте <span class="ar">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Карта Москвы ===== -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="map-wrap">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=37.645%2C55.758%2C37.665%2C55.772&amp;layer=mapnik&amp;marker=55.765%2C37.655"
+        title="Офис GlowByte в Москве — Нижний Сусальный переулок, 5с19"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--gray);text-align:center">
+      Московский офис · ст.&nbsp;м. Красные Ворота или Курская — 5&nbsp;мин пешком
+    </p>
+  </div>
+</section>
+
+<!-- ===== Соцсети + Карьера ===== -->
+<section class="dir-sec alt">
+  <div class="wrap">
+    <div class="career-grid reveal">
+
+      <!-- Соцсети -->
+      <div>
+        <span class="eyebrow">Мы в сети</span>
+        <h2>Следите за нами</h2>
+        <p class="lead">Публикуем новости, кейсы, аналитику и&nbsp;анонсы мероприятий.</p>
+        <div class="socials-row">
+          <a href="https://vk.com/glowbyte" target="_blank" rel="noopener" class="social-btn">
+            <span class="sico">🅥</span> ВКонтакте
+          </a>
+          <a href="https://www.youtube.com/@glowbyte" target="_blank" rel="noopener" class="social-btn">
+            <span class="sico">▶</span> YouTube
+          </a>
+          <a href="https://t.me/GlowByteHRBar" target="_blank" rel="noopener" class="social-btn">
+            <span class="sico">✈</span> Telegram
+          </a>
+        </div>
+      </div>
+
+      <!-- Карьера -->
+      <div>
+        <span class="eyebrow">Карьера</span>
+        <h2>Работайте с&nbsp;нами</h2>
+        <p class="lead">Нам интересны сильные специалисты в&nbsp;области BI, Big Data и&nbsp;аналитики данных. Смотрите вакансии или&nbsp;присылайте резюме напрямую.</p>
+        <div class="career-links">
+          <a href="https://job.glowbyteconsulting.com" target="_blank" rel="noopener" class="btn btn-primary">
+            Открытые вакансии <span class="ar">→</span>
+          </a>
+          <a href="mailto:job@glowbyteconsulting.com" class="btn btn-ghost">
+            Отправить резюме <span class="ar">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+  <div class="cta reveal">
+    <h2>Обсудим ваш проект?</h2>
+    <p>Расскажите о задаче — ответим и&nbsp;предложим решение.</p>
+    <a href="mailto:contact@glowbyteconsulting.com" class="btn btn-white">Написать письмо <span class="ar">→</span></a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap fg">
+    <div>
+      <img src="assets/logo-white.svg" alt="GlowByte" style="height:30px;width:auto;display:block">
+      <p style="color:#9aa0a8;margin-top:16px;max-width:300px;font-size:15px">№1 по услугам BI и Big Data в России. Внедряем решения для управления на основе данных.</p>
+    </div>
+    <div>
+      <h5>Направления</h5>
+      <ul>
+        <li><a href="business-intelligence.html">Business Intelligence</a></li>
+        <li><a href="dwh.html">DWH — хранилища данных</a></li>
+        <li><a href="finansovaya-analitika.html">Финансовая аналитика</a></li>
+        <li><a href="zakaznaya-razrabotka.html">Заказная разработка</a></li>
+        <li><a href="index.html#directions">Все направления →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="index.html#why">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="events.html">Мероприятия</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="tel:+74956406678">+7 495 640-66-78</a></li>
+        <li><a href="mailto:contact@glowbyteconsulting.com">contact@glowbyteconsulting.com</a></li>
+        <li style="color:#9aa0a8;font-size:14px;margin-top:4px">Нижний Сусальный пер., 5с19</li>
+        <li style="color:#9aa0a8;font-size:14px">Москва, 105064</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fb">
+    <span>© 2026 GlowByte Consulting. Все права защищены.</span>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<script src="assets/site.js?v=2"></script>
+</body>
+</html>
